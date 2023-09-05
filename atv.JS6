@@ -116,7 +116,7 @@ do {
       devolverLivro();
       break;
     case 6:
-      console.log("Saindo do sistema. Até a próxima. :)");
+      console.log("Saindo do sistema. Até a próxima bookfan :)");
       break;
     default:
       console.log("Opção inválida. Tente novamente.");
