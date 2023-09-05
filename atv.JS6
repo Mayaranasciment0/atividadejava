@@ -1,0 +1,125 @@
+// Inicialização do Sistema
+let biblioteca = [];
+
+// Função para exibir o menu e obter a escolha do usuário
+function exibirMenu() {
+  console.log("Menu Principal:");
+  console.log("1. Cadastrar Livro");
+  console.log("2. Alterar Livro");
+  console.log("3. Deletar Livro");
+  console.log("4. Realizar Empréstimo de Livro");
+  console.log("5. Devolver Livro");
+  console.log("6. Sair");
+  return parseInt(prompt("Escolha uma opção:"));
+}
+
+// Função para cadastrar um novo livro
+function sistemaBiblioteca() {
+  const titulo = prompt("Insira o título do livro:");
+  const autor = prompt("Insira o autor do livro:");
+  const id = biblioteca.length + 1; // Gerando um ID único
+  const emprestado = false;
+
+  const livro = { id, titulo, autor, emprestado };
+  biblioteca.push(livro);
+  console.log("Livro cadastrado com sucesso!");
+}
+
+// Função para alterar um livro existente
+function alterarLivro() {
+  const id = parseInt(prompt("Insira o ID do livro que deseja alterar:"));
+  const livro = biblioteca.find((livro) => livro.id === id);
+
+  if (livro) {
+    const novoTitulo = prompt("Insira o novo título (ou pressione Enter para manter o atual):");
+    const novoAutor = prompt("Insira o novo autor (ou pressione Enter para manter o atual):");
+
+    if (novoTitulo !== "") {
+      livro.titulo = novoTitulo;
+    }
+
+    if (novoAutor !== "") {
+      livro.autor = novoAutor;
+    }
+
+    console.log("Livro alterado com sucesso!");
+  } else {
+    console.log("Livro não encontrado, tente novamente");
+  }
+}
+
+// Função para deletar um livro
+function deletarLivro() {
+  const id = parseInt(prompt("Insira o ID do livro que deseja deletar:"));
+  const index = biblioteca.findIndex((livro) => livro.id === id);
+
+  if (index !== -1) {
+    biblioteca.splice(index, 1);
+    console.log("Livro apagado com sucesso!");
+  } else {
+    console.log("Livro não encontrado. Tente novamente");
+  }
+}
+
+// Função para realizar empréstimo de um livro
+function realizarEmprestimo() {
+  const id = parseInt(prompt("Insira o ID do livro que deseja emprestar:"));
+  const livro = biblioteca.find((livro) => livro.id === id);
+
+  if (livro) {
+    if (!livro.emprestado) {
+      livro.emprestado = true;
+      console.log("Livro emprestado com sucesso!");
+    } else {
+      console.log("Este livro já está emprestado.");
+    }
+  } else {
+    console.log("Livro não encontrado. Tente novamente");
+  }
+}
+
+// Função para devolver um livro emprestado
+function devolverLivro() {
+  const id = parseInt(prompt("Insira o ID do livro que deseja devolver:"));
+  const livro = biblioteca.find((livro) => livro.id === id);
+
+  if (livro) {
+    if (livro.emprestado) {
+      livro.emprestado = false;
+      console.log("Livro devolvido com sucesso!");
+    } else {
+      console.log("Este livro não está emprestado.");
+    }
+  } else {
+    console.log("Livro não encontrado. Tente novamente");
+  }
+}
+
+// Laço de Repetição para exibir o menu principal
+let opcao;
+do {
+  opcao = exibirMenu();
+  switch (opcao) {
+    case 1:
+      sistemaBiblioteca();
+      break;
+    case 2:
+      alterarLivro();
+      break;
+    case 3:
+      deletarLivro();
+      break;
+    case 4:
+      realizarEmprestimo();
+      break;
+    case 5:
+      devolverLivro();
+      break;
+    case 6:
+      console.log("Saindo do sistema. Até a próxima. :)");
+      break;
+    default:
+      console.log("Opção inválida. Tente novamente.");
+  }
+} while (opcao !== 6);
+
