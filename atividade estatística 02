@@ -1,0 +1,65 @@
+#1ºquestão: Classificar as variáveis;
+#Qualitativas: 
+#Estado = RR;AP;AC;RO;PA;AM;TO;PB;MA;RN;SE;PI;BA;PE;AL;CE;SP;RJ;ES;MG;SC;RS;PR;MT;GO;MS;DF
+
+#Quantitativas =
+#Escolaridade = 5,7 ; 6 ; 4,5 ; 4,9 ; 4,7 ; 5,5 ; 4,5 ; 3,9 ; 3,6 ; 4,5 ; 4,3 ; 3,5 ; 4,1 ; 4,6 ; 3,7 ; 4 ; 6,8 ; 7,1 ; 5,7 ; 5,4 ; 6,3 ; 6,4 ; 6 ; 5,4 ; 5,5 ; 5,7 ; 8,2
+#Renda = 685; 683; 526; 662; 536; 627; 520; 423; 343; 513; 462; 383; 460; 517; 454; 448; 1076; 970; 722; 681; 814; 800; 782; 775; 689; 731; 1499
+
+#2 Usar a biblioteca readxl para ler o arquivo "censo"
+library(readxl)
+
+#3 Usar a biblioteca summary para análise dos dados.
+library(summarytools)
+
+#4 Visualizar o dataframe *Censo
+dados <- censo
+View(dados)
+
+#2ºquestão: Frequência pontual para *Renda
+renda <- censo$RENDA
+tabela_freq_p_renda <- table(renda)
+
+print("Frequência pontual para *Renda: ")
+print(tabela_freq_p_renda)
+
+#6 Frequência Pontual para *Escolaridade
+escolaridade <- censo$ESCOLARIDADE
+tabela_freq_p_escolaridade <- table(escolaridade)
+
+print("Frequência Pontual para *Escolaridade: ")
+print(tabela_freq_p_escolaridade)
+
+#7 Frequência pontual para *Estado
+estado <- censo$ESTADO
+tabela_freq_p_estado <- table(estado)
+
+print("Tabela de Frequência Pontual para Estado:")
+print(tabela_freq_p_estado)
+
+# 3ºquestão: Criar tabela de frequência intervalar para RENDA
+num_intervalos <- 5
+tabela_freq_interv_renda <- cut(renda, breaks = num_intervalos)
+freq_interv <- table(tabela_freq_interv_renda)
+
+print("Tabela de Frequência Intervalar para Renda:")
+print(freq_interv)
+
+# Criar tabela de frequência intervalar para escolaridade
+tabela_freq_interv_escolaridade <- cut(escolaridade, breaks = num_intervalos)
+freq_interv <- table(tabela_freq_interv_escolaridade)
+
+print("Tabela de Frequência Intervalar para escolaridade:")
+print(freq_interv)
+
+# 4ºquestão: Calcular medidas-resumo
+library(psych)
+resumo <- describe(censo)
+print(resumo)
+
+#5ºquestão: Construir o histograma de cada variável quantitativa.
+hist(renda, main = "Histograma da Renda", xlab = "Renda", ylab = "Frequência", col="orange", border="black")
+hist(escolaridade, main = "Histograma da Escolaridade", xlab = "Escolaridade", ylab = "Frequência", col="green", border="black")
+
+boxplot(renda, main = "Boxplot da Renda", ylab = "Renda", col="pink", border="black")
+boxplot(escolaridade, main = "Boxplot da Escolaridade", ylab = "Escolaridade", col="brown", border="black")
