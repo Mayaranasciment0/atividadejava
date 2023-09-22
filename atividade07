@@ -1,0 +1,61 @@
+// Saldo inicial
+let saldo = 1000;
+
+// Array para armazenar o histórico de transações
+let historicoTransacoes = [];
+
+// Laço de repetição
+while (true) {
+  // Exibe o menu de opções
+  const escolha = prompt(`Bem-vindo ao Sistema de Conta Bancária!\nEscolha uma opção:\n1. Depositar\n2. Sacar\n3. Ver Saldo\n4. Ver Histórico de Transações\n5. Sair`);
+
+  // Converte a escolha para um número inteiro
+  const opcao = parseInt(escolha);
+
+  // Valida a entrada do usuário
+  if (isNaN(opcao) || opcao < 1 || opcao > 5) {
+    alert("Opção inválida. Por favor, escolha uma opção válida.");
+    continue;
+  }
+
+  // Realiza a ação correspondente à escolha do usuário
+  switch (opcao) {
+    case 1: // Depositar
+      const valorDeposito = parseFloat(prompt("Digite o valor a ser depositado:"));
+      if (isNaN(valorDeposito) || valorDeposito <= 0) {
+        alert("Valor de depósito inválido.");
+      } else {
+        saldo += valorDeposito;
+        historicoTransacoes.push({ tipo: "Depósito", valor: valorDeposito, data: new Date() });
+        alert(`Depósito de R$${valorDeposito.toFixed(2)} realizado com sucesso.`);
+      }
+      break;
+
+    case 2: // Sacar
+      const valorSaque = parseFloat(prompt("Digite o valor a ser sacado:"));
+      if (isNaN(valorSaque) || valorSaque <= 0 || valorSaque > saldo) {
+        alert("Valor de saque inválido ou saldo insuficiente.");
+      } else {
+        saldo -= valorSaque;
+        historicoTransacoes.push({ tipo: "Saque", valor: valorSaque, data: new Date() });
+        alert(`Saque de R$${valorSaque.toFixed(2)} realizado com sucesso.`);
+      }
+      break;
+
+    case 3: // Ver Saldo
+      alert(`Saldo atual: R$${saldo.toFixed(2)}`);
+      break;
+
+    case 4: // Ver Histórico de Transações
+      let historico = "Histórico de Transações:\n";
+      for (const transacao of historicoTransacoes) {
+        historico += `${transacao.tipo}: R$${transacao.valor.toFixed(2)} em ${transacao.data.toLocaleString()}\n`;
+      }
+      alert(historico);
+      break;
+
+    case 5: // Sair
+      alert("Obrigado por usar o Sistema de Conta Bancária!");
+      return; // Encerra o programa
+  }
+}
