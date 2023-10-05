@@ -1,0 +1,145 @@
+/* Reset de estilos padrão */
+body, h1, p, ul, li, button, select, label, input {
+    margin: 0;
+    padding: 0;
+}
+
+/* Definindo as cores para o header e body */
+body {
+    background-color: #f0f0f0; 
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background-color: #fff; 
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    display: flex; /* Usando flexbox para layout */
+    flex-wrap: wrap;
+    justify-content: space-between; /* Alinha os itens à esquerda e à direita */
+    align-items: flex-start; /* Alinha os itens ao topo */
+}
+
+h1 {
+    background-color: #333;
+    color: white; 
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* Estilizando a navbar */
+.form {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: calc(50% - 20px); /* 50% do espaço disponível menos a margem */
+}
+
+/* Estilizando os botões */
+.button {
+    background-color: #007bff; /* Azul para os botões */
+    color: white; /* Texto branco para contraste */
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.button.delete-button {
+    background-color: #ff0000; /* Vermelho para o botão "Deletar" */
+}
+
+/* Estilizando os inputs e selects */
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Estilizando a lista de contas */
+.lista-contas {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+    width: calc(50% - 20px); /* 50% do espaço disponível menos a margem */
+}
+
+/* Estilizando o extrato e botão "Deletar Conta" */
+.extrato {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #f9f9f9; /* Cinza claro para o extrato */
+}
+
+/* Estilizando o footer */
+footer {
+    background-color: #333; /* Cinza escuro para o rodapé */
+    color: white; /* Texto branco para contraste */
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Estilizando a Navbar */
+.navbar {
+    background-color: #333;
+    color: white;
+    text-align: center; /* Alinhar o conteúdo ao centro horizontalmente */
+    padding: 10px 0; /* Espaçamento interno superior e inferior */
+}
+
+
+.navbar h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px; /* Tamanho da fonte do título da navbar */
+}
+
+/* Estilizando os links na Navbar */
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline; /* Para que os itens da lista apareçam na mesma linha */
+    margin-right: 20px; /* Espaçamento entre os itens da lista */
+}
+
+.navbar a {
+    text-decoration: none; /* Remover decoração de texto sublinhado */
+    color: white; /* Cor dos links na navbar */
+    font-weight: bold; /* Texto em negrito */
+}
+
+/* Estilizando o Footer */
+.footer {
+    background-color: #333; /* Cor de fundo do footer */
+    color: white; /* Cor do texto do footer */
+    text-align: center; /* Alinhar o texto ao centro */
+    padding: 10px 0; /* Espaçamento interno superior e inferior */
+}
+
+/* Estilizando o Footer Links */
+.footer a {
+    color: #007bff; /* Cor dos links no footer */
+    text-decoration: none; /* Remover decoração de texto sublinhado */
+}
+
+.footer a:hover {
+    text-decoration: underline; /* Adicionar sublinhado ao passar o mouse sobre os links */
+}
